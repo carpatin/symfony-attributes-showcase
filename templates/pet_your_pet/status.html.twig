@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Showcasing use of #[AutowireLocator] without using service keys{% endblock %}
+
+{% block body %}
+    <div class="min-h-screen bg-gray-900 flex items-center justify-center p-6">
+        <div class="bg-gray-800 p-8 rounded-lg shadow-xl max-w-md w-full">
+            <h2 class="text-2xl font-bold mb-6 text-white text-center">Pet your pet, {{ pet.name }}</h2>
+
+            <form method="POST" action="{{ path('app_petyourpet_pet') }}" class="space-y-4">
+                <input type="hidden" name="petName" value="{{ pet.name }}">
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                        <div class="flex flex-col space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <input type="radio" checked id="caretake_water" name="command" value="give_water"
+                                       class="w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-600 bg-gray-700">
+                                <label for="caretake_water" class="text-white">Give water</label>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <input type="checkbox" id="is_cooled_water" name="giveWaterCaretake[isCooledWater]"
+                                       value="1"
+                                       class="w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-600 bg-gray-700">
+                                <label for="is_cooled_water" class="text-white">Is cooled water?</label>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <input type="number" id="bowls_count" name="giveWaterCaretake[bowlsCount]" value="1"
+                                       class="w-8 h-8 text-white focus:ring-blue-500 border-gray-600 bg-gray-700">
+                                <label for="bowls_count" class="text-white">How many times fill the bowl?</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                        <div class="flex flex-col space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <input type="radio" id="caretake_food" name="command" value="give_food"
+                                       class="w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-600 bg-gray-700">
+                                <label for="caretake_food" class="text-white">Give food</label>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <input type="checkbox" id="is_premium_food" name="giveFoodCaretake[isPremiumFood]"
+                                       value="1"
+                                       class="w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-600 bg-gray-700">
+                                <label for="is_premium_food" class="text-white">Is premium food?</label>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <input type="number" id="food_servings" name="giveFoodCaretake[foodServingsCount]"
+                                       value="1"
+                                       class="w-8 h-8 text-white focus:ring-blue-500 border-gray-600 bg-gray-700">
+                                <label for="food_servings" class="text-white">How many servings?</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                        <div class="flex flex-col space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <input type="radio" id="caretake_caress" name="command" value="caress"
+                                       class="w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-600 bg-gray-700">
+                                <label for="caretake_caress" class="text-white">Caress ❤️</label>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <input type="number" id="caress_time_minutes" name="caressCaretake[caressTimeMinutes]"
+                                       value="1"
+                                       class="w-8 h-8 text-white focus:ring-blue-500 border-gray-600 bg-gray-700">
+                                <label for="caress_time_minutes" class="text-white">For how long, in minutes?</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                        <div class="flex flex-col space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <input type="radio" id="caretake_play" name="command" value="play"
+                                       class="w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-600 bg-gray-700">
+                                <label for="caretake_play" class="text-white">Play ⚽</label>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <input type="number" id="play_time_minutes" name="playCaretake[playTimeMinutes]"
+                                       value="1"
+                                       class="w-8 h-8 text-white focus:ring-blue-500 border-gray-600 bg-gray-700">
+                                <label for="play_time_minutes" class="text-white">For how long, in minutes?</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <button type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                        Take care of {{ pet.name }}!
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
