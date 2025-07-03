@@ -12,13 +12,13 @@ use Exception;
 
 class PetCaretake
 {
-    public const COMMAND_GIVE_WATER = 'give_water';
-    public const COMMAND_GIVE_FOOD  = 'give_food';
-    public const COMMAND_CARESS     = 'caress';
-    public const COMMAND_PLAY       = 'play';
+    public const string COMMAND_GIVE_WATER = 'give_water';
+    public const string COMMAND_GIVE_FOOD  = 'give_food';
+    public const string COMMAND_CARESS     = 'caress';
+    public const string COMMAND_PLAY       = 'play';
 
     public function __construct(
-        public string $petName,
+        public string $name,
         public string $command,
         public GiveWaterDetails $giveWaterCaretake,
         public GiveFoodDetails $giveFoodCaretake,

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Random quote{% endblock %}
+
+{% block body %}
+    <div class="jumbotron bg-dark text-white">
+        <h1><em>"{{ quote.quoteText }}"</em></h1>
+        <p>{{ quote.authorName }}</p>
+    </div>
+{% endblock %}

@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Attribute\MapEntityByPayloadField;
 use App\Dto\PetYourPet\PetCaretake;
 use App\Entity\Pet;
-use App\PetYourPet\CaretakeCommands\Caress;
-use App\PetYourPet\CaretakeCommands\GiveFood;
-use App\PetYourPet\CaretakeCommands\GiveWater;
-use App\PetYourPet\CaretakeCommands\Play;
 use App\Repository\PetRepository;
+use App\Service\PetYourPet\CaretakeCommands\Caress;
+use App\Service\PetYourPet\CaretakeCommands\GiveFood;
+use App\Service\PetYourPet\CaretakeCommands\GiveWater;
+use App\Service\PetYourPet\CaretakeCommands\Play;
+use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
@@ -81,12 +83,17 @@ class PetYourPetController extends AbstractController
             PetCaretake::COMMAND_PLAY       => Play::class,
         ])]
         ContainerInterface $caretakeCommands,
+        // Below an example of using a custom attribute to map a custom field in the POST body to an entity.
+        #[MapEntityByPayloadField(field: 'name')]
+        Pet $pet,
+        EntityManagerInterface $entityManager,
     ): Response {
         $command = $caretakeCommands->get($caretake->command);
 
-        // TODO: continue from here; implement actual commands
-        $command->execute($caretake->petName, $caretake->getCommandDetails());
+        $command->execute($pet, $caretake->getCommandDetails());
 
-        return $this->redirectToRoute('app_petyourpet_status', ['name' => $caretake->petName]);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_petyourpet_status', ['name' => $pet->getName()]);
     }
 }

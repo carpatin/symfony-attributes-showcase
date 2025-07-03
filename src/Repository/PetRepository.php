@@ -18,7 +18,6 @@ class PetRepository extends ServiceEntityRepository
         parent::__construct($registry, Pet::class);
     }
 
-
     public function findByName(?string $name): Pagerfanta
     {
         $qb = $this

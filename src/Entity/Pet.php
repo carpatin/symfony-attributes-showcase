@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use App\PetYourPet\PetMood;
 use App\Repository\PetRepository;
+use App\Service\PetYourPet\PetMood;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PetRepository::class)]
@@ -23,8 +23,8 @@ class Pet
     #[ORM\Column(options: ['default' => false])]
     private bool $isHungry = false;
 
-    #[ORM\Column(enumType: PetMood::class, options: ['default' => PetMood::NORMAL->value])]
-    private PetMood $mood = PetMood::NORMAL;
+    #[ORM\Column(enumType: PetMood::class, options: ['default' => PetMood::RELAXED->value])]
+    private PetMood $mood = PetMood::RELAXED;
 
     public function getId(): ?int
     {

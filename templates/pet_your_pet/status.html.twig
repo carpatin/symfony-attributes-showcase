@@ -1,14 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Showcasing use of #[AutowireLocator] without using service keys{% endblock %}
+{% block title %}Pet Your Pet - {{ pet.name }}{% endblock %}
 
 {% block body %}
     <div class="min-h-screen bg-gray-900 flex items-center justify-center p-6">
         <div class="bg-gray-800 p-8 rounded-lg shadow-xl max-w-md w-full">
             <h2 class="text-2xl font-bold mb-6 text-white text-center">Pet your pet, {{ pet.name }}</h2>
-
+            <p class="text-2xl font-bold text-white mb-2 bg-gray-700 rounded-lg p-3">Mood: {{ pet.mood.value }}</p>
+            <p class="text-2xl font-bold text-white mb-2 bg-gray-700 rounded-lg p-3">Thirsty? <span
+                    class="{{ pet.isThirsty ? 'text-red-300' : 'text-green-300' }}">{{ pet.isThirsty ? 'Yes' : 'No' }}</span>
+            </p>
+            <p class="text-2xl font-bold text-white mb-2 bg-gray-700 rounded-lg p-3">Hungry? <span
+                    class="{{ pet.isHungry ? 'text-red-300' : 'text-green-300' }}">{{ pet.isHungry ? 'Yes' : 'No' }}</span>
+            </p>
             <form method="POST" action="{{ path('app_petyourpet_pet') }}" class="space-y-4">
-                <input type="hidden" name="petName" value="{{ pet.name }}">
+                <input type="hidden" name="name" value="{{ pet.name }}">
                 <div class="space-y-3">
                     <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors">
                         <div class="flex flex-col space-y-3">

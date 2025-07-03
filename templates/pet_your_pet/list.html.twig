@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Pets listing{% endblock %}
+{% block title %}Pet Your Pet - Listing{% endblock %}
 
 {% block body %}
     <div class="min-h-screen bg-gray-900">
@@ -18,7 +18,8 @@
                 {% for pet in pets %}
                     <tr class="text-gray-300 hover:bg-gray-700">
                         <td class="px-6 py-4 whitespace-nowrap">{{ pet.name }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ pet.mood.value }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            {{ pet.mood.value }}{{ pet.isThirsty ? ', thirsty' : ''}}{{ pet.isHungry ? ', hungry' : ''}}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <a href="{{ path('app_petyourpet_status', {'name': pet.name}) }}"
                                class="text-blue-400 hover:text-blue-300">View Status</a>

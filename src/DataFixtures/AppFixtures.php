@@ -58,7 +58,7 @@ class AppFixtures extends Fixture
         foreach (range(1, 100) as $i) {
             $pet = new Pet();
             $pet->setName($faker->unique()->firstName());
-            $pet->setMood($faker->randomElement([PetMood::NORMAL, PetMood::APATHETIC, PetMood::HYPER]));
+            $pet->setMood($faker->randomElement([PetMood::RELAXED, PetMood::APATHETIC, PetMood::HYPER]));
             $pet->setIsHungry($faker->boolean());
             $pet->setIsThirsty($faker->boolean());
             $manager->persist($pet);

@@ -10,7 +10,6 @@ use App\TextBeautify\Html\ItalicHtmlBeautifier;
 use Symfony\Bridge\Twig\Attribute\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -24,10 +23,11 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/beautify')]
 class TextBeautifyController extends AbstractController
 {
-    #[Route('/', methods: ['GET'])]
-    public function index(): Response
+    #[Route('/', name: 'app_text_beautify_index', methods: ['GET'])]
+    #[Template('text_beautify/index.html.twig')]
+    public function index(): array
     {
-        return $this->render('text_beautify/index.html.twig');
+        return [];
     }
 
     #[Route('/', methods: ['POST'])]

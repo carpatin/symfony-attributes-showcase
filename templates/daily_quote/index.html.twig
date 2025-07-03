@@ -1,10 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DailyQuoteController!{% endblock %}
+{% block title %}Your daily quote! Inspiration for the day!{% endblock %}
 
 {% block body %}
-    <div>
-        <h1>{{ quote.quoteText }}</h1>
-        <p>{{ quote.authorName }}</p>
+    <div
+        style="text-align: center; margin: 50px auto; max-width: 600px; padding: 20px; border: 2px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); background-color: #222; color: #fff;">
+        <h1 style="color: #fff; margin-bottom: 30px;">Quote of the Day!</h1>
+
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <a href="{{ path('app_daily_quote_random') }}"
+               style="font-size: 1.5em; text-decoration: none; padding: 15px; background-color: #333; border-radius: 5px; color: #fff; border: 1px solid #555;">
+                Random Quote
+            </a>
+
+            <a href="{{ path('app_daily_quote_liked') }}"
+               style="font-size: 1.5em; text-decoration: none; padding: 15px; background-color: #333; border-radius: 5px; color: #fff; border: 1px solid #555;">
+                One of most liked quotes
+            </a>
+        </div>
     </div>
 {% endblock %}
