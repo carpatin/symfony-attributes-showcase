@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\TextBeautify\Html;
+namespace App\Service\TextBeautify\HtmlTagging;
 
+use App\Service\TextBeautify\BeautifierInterface;
 use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
-#[AutoconfigureTag('app.text_beautifier')]
-#[AsTaggedItem(index: 'html_italic_beautifier', priority: 15)]
-class ItalicHtmlBeautifier
+#[AutoconfigureTag('app.html_text_beautifier')]
+#[AsTaggedItem(index: 'italic_text', priority: 90)]
+class ItalicTextBeautifier implements BeautifierInterface
 {
     public function beautify(string $text): string
     {

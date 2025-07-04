@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\TextBeautify\CharReplace;
+namespace App\Service\TextBeautify\EmojiReplacing;
 
+use App\Service\TextBeautify\EmojiReplacingBeautifierInterface;
 use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
-use Symfony\Component\String\Inflector\EnglishInflector;
 
-#[AsTaggedItem(index: 'animal_replace', priority: 100)]
-class AnimalReplaceBeautifier implements CharReplaceBeautifierInterface
+#[AsTaggedItem(index: 'animal_replacing', priority: 200)]
+class AnimalReplacingBeautifier implements EmojiReplacingBeautifierInterface
 {
-    private const ANIMALS = [
+    use EmojiReplaceTrait;
+
+    private const array ANIMALS = [
         'monkey'    => '🐒',       // U+1F412
         'gorilla'   => '🦍',      // U+1F98D
         'dog'       => '🐶',          // U+1F436
@@ -60,16 +62,6 @@ class AnimalReplaceBeautifier implements CharReplaceBeautifierInterface
 
     public function beautify(string $text): string
     {
-        $mappings = [];
-        $inflector = new EnglishInflector();
-        foreach (self::ANIMALS as $animal => $emoji) {
-            $plurals = $inflector->pluralize($animal);
-            $pluralMappings = array_combine($plurals, array_fill(0, count($plurals), str_repeat($emoji, 3)));
-            $mappings = [...$mappings, ...$pluralMappings];
-        }
-
-        $mappings = [...$mappings, ...self::ANIMALS];
-
-        return str_replace(array_keys($mappings), array_values($mappings), $text);
+        return $this->replaceEmojis($text, self::ANIMALS);
     }
 }

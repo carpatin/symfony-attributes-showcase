@@ -3,23 +3,53 @@
 {% block title %}Text Beautifier{% endblock %}
 
 {% block body %}
-    <div class="min-h-screen bg-gray-900 flex items-center justify-center p-6">
-        <div class="bg-gray-800 p-8 rounded-lg shadow-xl max-w-md w-full">
-            <h2 class="text-2xl font-bold mb-6 text-white text-center">Beautify text:</h2>
+    <div class="bg-gray-800 p-8 rounded-lg shadow-xl max-w-md w-full">
+        <h2 class="text-2xl font-bold mb-6 text-white text-center">Beautify text:</h2>
 
-            <form method="POST" action="" class="space-y-4">
-                <div class="space-y-3">
-                    <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors">
-                        <textarea id="text" name="text" class="w-full rounded-lg bg-gray-700 p-2 text-white"></textarea>
-                    </div>
-                    <div class="mt-6">
-                        <button type="submit"
-                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
-                            Beautify this!
-                        </button>
-                    </div>
+        <form method="POST" action="{{ path('app_text_beautify_plain') }}" class="space-y-4">
+            <div class="space-y-4">
+                <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                    <input type="radio" id="plain" name="beautify_type" value="plain" class="text-blue-600" checked
+                           data-action="{{ path('app_text_beautify_plain') }}">
+                    <label for="plain" class="text-white">Plain Text</label>
                 </div>
-            </form>
-        </div>
+                <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                    <input type="radio" id="emoji" name="beautify_type" value="emoji" class="text-blue-600"
+                           data-action="{{ path('app_text_beautify_emoji') }}">
+                    <label for="emoji" class="text-white">Emoji</label>
+                </div>
+                <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                    <input type="radio" id="html" name="beautify_type" value="html" class="text-blue-600"
+                           data-action="{{ path('app_text_beautify_html') }}">
+                    <label for="html" class="text-white">HTML</label>
+                </div>
+                <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                    <input type="radio" id="padding" name="beautify_type" value="padding" class="text-blue-600"
+                           data-action="{{ path('app_text_beautify_padding') }}">
+                    <label for="padding" class="text-white">Padding</label>
+                </div>
+            </div>
+            <script>
+                document.querySelectorAll('input[name="beautify_type"]').forEach(radio => {
+                    radio.addEventListener('change', function () {
+                        if (this.checked) {
+                            this.closest('form').action = this.dataset.action;
+                        }
+                    });
+                });
+            </script>
+
+            <div class="space-y-3">
+                <div class="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                    <textarea id="text" name="text" class="w-full rounded-lg bg-gray-700 p-2 text-white"></textarea>
+                </div>
+                <div class="mt-6">
+                    <button type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                        Beautify this!
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 {% endblock %}

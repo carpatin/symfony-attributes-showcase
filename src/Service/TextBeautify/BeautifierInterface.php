@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\TextBeautify\CharPadding;
+namespace App\Service\TextBeautify;
 
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
 #[AutoconfigureTag('app.text_beautifier')]
-interface PaddingBeautifierInterface
+interface BeautifierInterface
 {
     public function beautify(string $text): string;
 }

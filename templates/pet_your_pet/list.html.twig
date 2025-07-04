@@ -3,8 +3,23 @@
 {% block title %}Pet Your Pet - Listing{% endblock %}
 
 {% block body %}
-    <div class="min-h-screen bg-gray-900">
-        <div class="p-6">
+    <div>
+        <div class="flex-grow">
+            <form method="GET" class="mb-4">
+                <div class="flex gap-2">
+                    <input type="text"
+                           name="search"
+                           class="flex-grow bg-gray-700 text-gray-300 border border-gray-600 rounded px-3 py-2 focus:outline-none focus:border-blue-500"
+                           placeholder="Search pets..."
+                           required>
+                    <input type="hidden" name="page" value="1">
+                    <input type="submit" value="Search"
+                           class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                </div>
+            </form>
+        </div>
+
+        <div class="p-2">
             <table class="w-full bg-gray-800 border border-gray-700">
                 <thead class="bg-gray-700">
                 <tr>
@@ -19,7 +34,7 @@
                     <tr class="text-gray-300 hover:bg-gray-700">
                         <td class="px-6 py-4 whitespace-nowrap">{{ pet.name }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            {{ pet.mood.value }}{{ pet.isThirsty ? ', thirsty' : ''}}{{ pet.isHungry ? ', hungry' : ''}}</td>
+                            {{ pet.mood.value }}{{ pet.isThirsty ? ', thirsty' : '' }}{{ pet.isHungry ? ', hungry' : '' }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <a href="{{ path('app_petyourpet_status', {'name': pet.name}) }}"
                                class="text-blue-400 hover:text-blue-300">View Status</a>

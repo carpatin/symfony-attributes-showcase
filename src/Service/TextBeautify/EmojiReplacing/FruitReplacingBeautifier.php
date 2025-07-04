@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\TextBeautify\CharReplace;
+namespace App\Service\TextBeautify\EmojiReplacing;
 
+use App\Service\TextBeautify\EmojiReplacingBeautifierInterface;
 use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
-use Symfony\Component\String\Inflector\EnglishInflector;
 
-#[AsTaggedItem(index: 'fruit_replace', priority: 150)]
-class FruitReplaceBeautifier implements CharReplaceBeautifierInterface
+#[AsTaggedItem(index: 'fruit_replacing', priority: 190)]
+class FruitReplacingBeautifier implements EmojiReplacingBeautifierInterface
 {
-    private const FRUITS = [
+    use EmojiReplaceTrait;
+
+    private const array FRUITS = [
         'grapes'      => '🍇', // U+1F347
         'melon'       => '🍈', // U+1F348
         'watermelon'  => '🍉', // U+1F349
@@ -36,16 +38,6 @@ class FruitReplaceBeautifier implements CharReplaceBeautifierInterface
 
     public function beautify(string $text): string
     {
-        $mappings = [];
-        $inflector = new EnglishInflector();
-        foreach (self::FRUITS as $fruit => $emoji) {
-            $plurals = $inflector->pluralize($fruit);
-            $pluralMappings = array_combine($plurals, array_fill(0, count($plurals), str_repeat($emoji, 3)));
-            $mappings = [...$mappings, ...$pluralMappings];
-        }
-
-        $mappings = [...$mappings, ...self::FRUITS];
-
-        return str_replace(array_keys($mappings), array_values($mappings), $text);
+        return $this->replaceEmojis($text, self::FRUITS);
     }
 }

@@ -4,17 +4,17 @@
 
 {% block body %}
     <div
-        style="text-align: center; margin: 50px auto; max-width: 600px; padding: 20px; border: 2px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); background-color: #222; color: #fff;">
-        <h1 style="color: #fff; margin-bottom: 30px;">Quote of the Day!</h1>
+        class="bg-gray-800 p-8 rounded-lg shadow-xl max-w-md w-full">
+        <h1 class="text-white mb-8">Quote of the Day!</h1>
 
-        <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="flex flex-col gap-5">
             <a href="{{ path('app_daily_quote_random') }}"
-               style="font-size: 1.5em; text-decoration: none; padding: 15px; background-color: #333; border-radius: 5px; color: #fff; border: 1px solid #555;">
+               class="text-2xl no-underline py-4 px-4 bg-gray-700 rounded border border-gray-600">
                 Random Quote
             </a>
 
             <a href="{{ path('app_daily_quote_liked') }}"
-               style="font-size: 1.5em; text-decoration: none; padding: 15px; background-color: #333; border-radius: 5px; color: #fff; border: 1px solid #555;">
+               class="text-2xl no-underline py-4 px-4 bg-gray-700 rounded border border-gray-600">
                 One of most liked quotes
             </a>
         </div>

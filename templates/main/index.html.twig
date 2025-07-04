@@ -3,20 +3,20 @@
 {% block title %}Symfony Attributes Showcased{% endblock %}
 {% block body %}
     <div
-        style="text-align: center; margin: 50px auto; max-width: 600px; padding: 20px; border: 2px solid #333; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.5); background-color: #222;">
-        <h1 style="color: #f8f9fa; margin-bottom: 30px;">Welcome to Symfony Attributes Showcase</h1>
+        class="bg-gray-800 p-8 rounded-lg shadow-xl max-w-md w-full">
+        <h1 class="text-gray-100 mb-8">Welcome to Symfony Attributes Showcase</h1>
 
-        <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="flex flex-col gap-5">
             <a href="{{ path('app_daily_quote_index') }}"
-               style="font-size: 1.5em; text-decoration: none; padding: 15px; background-color: #333; border-radius: 5px; color: #f8f9fa; border: 1px solid #444;">Daily
+               class="text-2xl no-underline p-4 bg-gray-700 rounded border border-600 text-gray-100">Daily
                 Quote</a>
 
             <a href="{{ path('app_petyourpet_list') }}"
-               style="font-size: 1.5em; text-decoration: none; padding: 15px; background-color: #333; border-radius: 5px; color: #f8f9fa; border: 1px solid #444;">Pet
+               class="text-2xl no-underline p-4 bg-gray-700 rounded border border-600 text-gray-100">Pet
                 Your Pet</a>
 
             <a href="{{ path('app_text_beautify_index') }}"
-               style="font-size: 1.5em; text-decoration: none; padding: 15px; background-color: #333; border-radius: 5px; color: #f8f9fa; border: 1px solid #444;">Text
+               class="text-2xl no-underline p-4 bg-gray-700 rounded border border-600 text-gray-100">Text
                 Beautifier</a>
         </div>
     </div>
