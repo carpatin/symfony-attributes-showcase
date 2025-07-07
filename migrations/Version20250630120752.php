@@ -14,7 +14,7 @@ final class Version20250630120752 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Create the quote table';
+        return 'Creates the quote table';
     }
 
     public function up(Schema $schema): void

@@ -16,6 +16,18 @@ class QuoteRepository extends ServiceEntityRepository
         parent::__construct($registry, Quote::class);
     }
 
+    public function findByAuthorName(string $name): array
+    {
+        return $this
+            ->createQueryBuilder('q')
+            ->innerJoin('q.author', 'a')
+            ->andWhere('a.name = :name')
+            ->setParameter('name', $name)
+            ->orderBy('q.likes', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function findRandom(): ?Quote
     {
         $total = $this

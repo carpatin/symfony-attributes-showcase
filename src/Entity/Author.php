@@ -45,7 +45,12 @@ class Author
         return $this->yearBorn;
     }
 
-    public function setYearBorn(int $yearBorn): static
+    public function getYearBornAsString(): ?string
+    {
+        return $this->yearBorn ? (string)$this->yearBorn : null;
+    }
+
+    public function setYearBorn(?int $yearBorn): static
     {
         $this->yearBorn = $yearBorn;
 
@@ -57,7 +62,12 @@ class Author
         return $this->yearDied;
     }
 
-    public function setYearDied(int $yearDied): static
+    public function getYearDiedAsString(): ?string
+    {
+        return $this->yearDied ? (string)$this->yearDied : null;
+    }
+
+    public function setYearDied(?int $yearDied): static
     {
         $this->yearDied = $yearDied;
 

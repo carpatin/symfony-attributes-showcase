@@ -1,11 +1,56 @@
+# Purpose
+
+This application's sole purpose is to showcase some features of Symfony, with emphasis on using attributes and the magic
+they bring to the newer versions of Symfony.
+The examples are offered for learning purposes and are by no means a statement of best practices for using the
+framework.
+
+# Documentation
+
+https://symfony.com/doc/current/reference/attributes.html
+
+# Symfony attributes under a spotlight
+
+## Doctrine Bridge
+
+- MapEntity
+
+## Contracts
+
+- Required
+
+## Dependency Injection
+
+- AsAlias
+- AsDecorator
+- AsTaggedItem
+- Autowire
+- AutoconfigureTag
+- AutowireLocator
+- AutowireIterator
+
+## HttpKernel
+
+- AsTargetedValueResolver
+- MapQueryParameter
+- MapRequestPayload
+
+## Routing
+
+- Route
+
+## Twig
+
+- Template
+
 # Pet Your Pet
 
 Controller: `App\Controller\PetYourPetController`
 
 URL's:
 
-- GET  https://localhost:8000/pets/ - listing of pets and their status
-- GET  https://localhost:8000/pets/{name} - single pet status page + controls for commands
+- GET https://localhost:8000/pets/ - listing of pets and their status
+- GET https://localhost:8000/pets/{name} - single pet status page + controls for commands
 - POST https://localhost:8000/pets/pet - execute petting command based on POSTed form data
 
 Showcased Symfony features:
@@ -30,12 +75,52 @@ Controller: `App\Controller\TextBeautifyController`
 
 URL's:
 
-TODO
+- GET https://localhost:8000/beautify/ - listing text beautification features
+- POST https://localhost:8000/beautify/plain - beautify plain text payload using a selection of algorithms
+- POST https://localhost:8000/beautify/emoji - beautify text using only word-to-emoji replacers
+- POST https://localhost:8000/beautify/html - beautify text by wrapping it into HTML tags
+- POST https://localhost:8000/beautify/padding - beautify text by padding it with emoji/symbols
+
+Showcased Symfony features:
+
+- `#[AutoconfigureTag]` for tagging services either by their interface or each service class individually
+- `#[AsTaggedItem]` to provide an index for iterable services and a priority for ordering them when interated
+- `#[AutowireIterator]` for injecting an iterable argument of similarly tagged services
+- `#[MapRequestPayload]` for mapping to a controller input argument DTO the entire submitted form data
 
 # Daily Quote
 
-Controller: `App\Controller\TextBeautifyController`
+Controller: `App\Controller\DailyQuoteController`
 
 URL's:
 
-TODO
+- GET https://localhost:8000/daily-quote/ - listing daily quote options
+- GET https://localhost:8000/daily-quote/authors - lists all quote authors paginated
+- GET https://localhost:8000/daily-quote/authors/{name}/quotes - list all quotes by author name
+- GET https://localhost:8000/daily-quote/quote/random - show a randomly chosen quote
+- GET https://localhost:8000/daily-quote/quote/liked - show a highly liked quote
+- GET https://localhost:8000/daily-quote/quote/one - show either a random quote or a highly liked one depending on
+  config
+- POST https://localhost:8000/daily-quote/quote/{id}/like - add a like for a quote identified by ID
+
+Showcased Symfony features:
+
+- The EntityValueResolver that automatically fetches the entity from the database and injects it into the controller
+  method (see the controller for adding likes)
+- `#[MapEntity(class: Author::class, expr: 'repository.findAllPaginated()')]` for mapping a paginator object to a
+  controller argument using the variant in which the requested entity type is given and then an expression to call
+  repository method to get the data
+- `#[MapEntity(class: Quote::class, expr: 'repository.findByAuthorName(name)')]` same as above just that this time with
+  value route parameter passed directly to repository method, in the expression
+- `#[MapEntity(mapping: ['name' => 'name'])]` for mapping one entity to an argument, and find that based on a route
+  parameter value. Another variant: `#[MapEntity(expr: 'repository.findOneBy({"name": name})')]`
+- `#[AsAlias]` used on the service class implementing an interface to instruct DI to autowire an instance of
+  this service and not others implementing the interface
+- `#[Autowire(service: MostLikesSelector::class)]` for direct selection of injected service
+- `#[Autowire('%env(APP_AUTHOR_NAME_PATTERN)%')]` for injecting a parameter value
+- `#[Autowire(expression: 'service("App\\\\DailyQuote\\\\QuoteSelectorResolver").resolveToSelector(env("APP_QUOTE_SELECTOR"))')]`
+used with an expression in which another service (a resolver) is called with env variable value to resolve the
+injected argument to a certain service
+
+- `#[AsDecorator(decorates: QuoteSelectorInterface::class, priority: 100)]` for applying a decorator pattern,
+  exemplified with two decorators applied on the same service identified by its interface

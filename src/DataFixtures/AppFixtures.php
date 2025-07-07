@@ -5,40 +5,38 @@ namespace App\DataFixtures;
 use App\Entity\Author;
 use App\Entity\Pet;
 use App\Entity\Quote;
-use App\PetYourPet\PetMood;
+use App\Service\PetYourPet\PetMood;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
+use JsonException;
 use Random\RandomException;
 
 class AppFixtures extends Fixture
 {
-    private const QUOTES = [
-        "Salt is born of the purest parents: the sun and the sea."                                       => "Pythagoras",
-        "Destroying rainforest for economic gain is like burning a Renaissance painting to cook a meal." => "E.O. Wilson",
-        "Life began with waking up and loving my mother's face."                                         => "George Eliot",
-        "In the middle of every difficulty lies opportunity."                                            => "Albert Einstein",
-        "It is never too late to be what you might have been."                                           => "George Eliot",
-        "Be yourself; everyone else is already taken."                                                   => "Oscar Wilde",
-        "Life is what happens when you're busy making other plans."                                      => "John Lennon",
-        "You don't have to be great to start, but you have to start to be great."                        => "Zig Ziglar",
-        "Success is stumbling from failure to failure with no loss of enthusiasm."                       => "Winston Churchill",
-        "The only place where success comes before work is in the dictionary."                           => "Vidal Sassoon",
-    ];
+    private const string QUOTES_FILE = '/data/quotes.json';
 
     /**
      * @throws RandomException
+     * @throws JsonException
      */
     public function load(ObjectManager $manager): void
     {
         $authors = [];
+        foreach ($this->loadQuotesFromFile() as $quoteData) {
+            [
+                'quote_text'        => $quoteText,
+                'quote_category'    => $quoteCategory,
+                'author_name'       => $authorName,
+                'author_birth_year' => $authorBirthYear,
+                'author_death_year' => $authorDeathYear,
+            ] = $quoteData;
 
-        foreach (self::QUOTES as $quoteText => $authorName) {
             if (!isset($authors[$authorName])) {
                 $author = new Author();
                 $author->setName($authorName);
-                $author->setYearBorn(random_int(1880, 1930));
-                $author->setYearDied(random_int(1930, 2010));
+                $author->setYearBorn($authorBirthYear);
+                $author->setYearDied($authorDeathYear);
 
                 $manager->persist($author);
                 $authors[$authorName] = $author;
@@ -48,8 +46,8 @@ class AppFixtures extends Fixture
             $quote = new Quote();
             $quote->setText($quoteText);
             $quote->setAuthor($author);
-            $quote->setLikes(random_int(1, 50));
-            $quote->setCategory('Inspirational');
+            $quote->setLikes(0);
+            $quote->setCategory($quoteCategory);
             $manager->persist($quote);
         }
 
@@ -65,5 +63,28 @@ class AppFixtures extends Fixture
         }
 
         $manager->flush();
+    }
+
+    /**
+     * @throws JsonException
+     */
+    private function loadQuotesFromFile(): array
+    {
+        $filePath = __DIR__.self::QUOTES_FILE;
+        if (!file_exists($filePath)) {
+            return [];
+        }
+
+        $jsonContent = file_get_contents($filePath);
+        if ($jsonContent === false) {
+            return [];
+        }
+
+        $quotes = json_decode($jsonContent, true, 512, JSON_THROW_ON_ERROR);
+        if (!is_array($quotes)) {
+            return [];
+        }
+
+        return $quotes;
     }
 }

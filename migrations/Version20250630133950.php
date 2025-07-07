@@ -14,14 +14,14 @@ final class Version20250630133950 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Create the author table';
+        return 'Creates the author table';
     }
 
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql(
-            'CREATE TABLE author (id SERIAL NOT NULL, name VARCHAR(100) NOT NULL, year_born SMALLINT NOT NULL, year_died SMALLINT NOT NULL, PRIMARY KEY(id))',
+            'CREATE TABLE author (id SERIAL NOT NULL, name VARCHAR(100) NOT NULL, year_born SMALLINT, year_died SMALLINT, PRIMARY KEY(id))',
         );
     }
 

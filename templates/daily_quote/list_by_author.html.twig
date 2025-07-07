@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% import 'daily_quote/_macros.html.twig' as ui %}
+
+{% block title %}Quotes by {{ author.name }}{% endblock %}
+
+{% block body %}
+    <div class="flex flex-col gap-2 w-full items-center">
+        <div class="bg-gray-700 p-9 rounded-lg shadow-xl max-w-3xl w-full">
+            <h1 class="text-3xl">{{ author.name }}</h1>
+            {% if author.yearBorn and author.yearBorn %}
+                <h4>Lived from {{ author.yearBorn }} to {{ author.yearDied }}</h4>
+            {% endif %}
+        </div>
+        {% for quote in quotes %}
+            <div class="bg-gray-800 p-8 rounded-lg shadow-xl max-w-2xl w-full">
+                <div class="flex justify-between items-center">
+                    <h1><em>"{{ quote.text }}"</em></h1>
+                    {{ ui.quote_entity_like_button(quote) }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

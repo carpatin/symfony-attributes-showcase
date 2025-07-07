@@ -1,0 +1,562 @@
+[
+    {
+        "quote_text": "The only thing we have to fear is fear itself.",
+        "quote_category": "Politics",
+        "author_name": "Franklin D. Roosevelt",
+        "author_birth_year": 1882,
+        "author_death_year": 1945
+    },
+    {
+        "quote_text": "Happiness lies in the joy of achievement and the thrill of creative effort.",
+        "quote_category": "Inspiration",
+        "author_name": "Franklin D. Roosevelt",
+        "author_birth_year": 1882,
+        "author_death_year": 1945
+    },
+    {
+        "quote_text": "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
+        "quote_category": "Humor",
+        "author_name": "Albert Einstein",
+        "author_birth_year": 1879,
+        "author_death_year": 1955
+    },
+    {
+        "quote_text": "Imagination is more important than knowledge.",
+        "quote_category": "Philosophy",
+        "author_name": "Albert Einstein",
+        "author_birth_year": 1879,
+        "author_death_year": 1955
+    },
+    {
+        "quote_text": "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.",
+        "quote_category": "Self",
+        "author_name": "Ralph Waldo Emerson",
+        "author_birth_year": 1803,
+        "author_death_year": 1882
+    },
+    {
+        "quote_text": "For every minute you are angry you lose sixty seconds of happiness.",
+        "quote_category": "Happiness",
+        "author_name": "Ralph Waldo Emerson",
+        "author_birth_year": 1803,
+        "author_death_year": 1882
+    },
+    {
+        "quote_text": "Be the change that you wish to see in the world.",
+        "quote_category": "Inspiration",
+        "author_name": "Mahatma Gandhi",
+        "author_birth_year": 1869,
+        "author_death_year": 1948
+    },
+    {
+        "quote_text": "Live as if you were to die tomorrow. Learn as if you were to live forever.",
+        "quote_category": "Wisdom",
+        "author_name": "Mahatma Gandhi",
+        "author_birth_year": 1869,
+        "author_death_year": 1948
+    },
+    {
+        "quote_text": "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+        "quote_category": "Motivation",
+        "author_name": "Winston Churchill",
+        "author_birth_year": 1874,
+        "author_death_year": 1965
+    },
+    {
+        "quote_text": "If you're going through hell, keep going.",
+        "quote_category": "Perseverance",
+        "author_name": "Winston Churchill",
+        "author_birth_year": 1874,
+        "author_death_year": 1965
+    },
+    {
+        "quote_text": "Not everything that is faced can be changed, but nothing can be changed until it is faced.",
+        "quote_category": "Social Justice",
+        "author_name": "James Baldwin",
+        "author_birth_year": 1924,
+        "author_death_year": 1987
+    },
+    {
+        "quote_text": "Love takes off the masks that we fear we cannot live without and know we cannot live within.",
+        "quote_category": "Love",
+        "author_name": "James Baldwin",
+        "author_birth_year": 1924,
+        "author_death_year": 1987
+    },
+    {
+        "quote_text": "Do not go where the path may lead, go instead where there is no path and leave a trail.",
+        "quote_category": "Adventure",
+        "author_name": "Ralph Waldo Emerson",
+        "author_birth_year": 1803,
+        "author_death_year": 1882
+    },
+    {
+        "quote_text": "Try not to become a man of success, but rather try to become a man of value.",
+        "quote_category": "Character",
+        "author_name": "Albert Einstein",
+        "author_birth_year": 1879,
+        "author_death_year": 1955
+    },
+    {
+        "quote_text": "In matters of style, swim with the current; in matters of principle, stand like a rock.",
+        "quote_category": "Leadership",
+        "author_name": "Thomas Jefferson",
+        "author_birth_year": 1743,
+        "author_death_year": 1826
+    },
+    {
+        "quote_text": "Honesty is the first chapter in the book of wisdom.",
+        "quote_category": "Ethics",
+        "author_name": "Thomas Jefferson",
+        "author_birth_year": 1743,
+        "author_death_year": 1826
+    },
+    {
+        "quote_text": "Darkness cannot drive out darkness; only light can do that. Hate cannot drive out hate; only love can do that.",
+        "quote_category": "Peace",
+        "author_name": "Martin Luther King Jr.",
+        "author_birth_year": 1929,
+        "author_death_year": 1968
+    },
+    {
+        "quote_text": "Injustice anywhere is a threat to justice everywhere.",
+        "quote_category": "Justice",
+        "author_name": "Martin Luther King Jr.",
+        "author_birth_year": 1929,
+        "author_death_year": 1968
+    },
+    {
+        "quote_text": "I have not failed. I've just found 10,000 ways that won't work.",
+        "quote_category": "Perseverance",
+        "author_name": "Thomas Edison",
+        "author_birth_year": 1847,
+        "author_death_year": 1931
+    },
+    {
+        "quote_text": "Genius is one percent inspiration and ninety-nine percent perspiration.",
+        "quote_category": "Motivation",
+        "author_name": "Thomas Edison",
+        "author_birth_year": 1847,
+        "author_death_year": 1931
+    },
+    {
+        "quote_text": "The unexamined life is not worth living.",
+        "quote_category": "Philosophy",
+        "author_name": "Socrates",
+        "author_birth_year": -470,
+        "author_death_year": -399
+    },
+    {
+        "quote_text": "There is only one good, knowledge, and one evil, ignorance.",
+        "quote_category": "Knowledge",
+        "author_name": "Socrates",
+        "author_birth_year": -470,
+        "author_death_year": -399
+    },
+    {
+        "quote_text": "A room without books is like a body without a soul.",
+        "quote_category": "Literature",
+        "author_name": "Marcus Tullius Cicero",
+        "author_birth_year": -106,
+        "author_death_year": -43
+    },
+    {
+        "quote_text": "Gratitude is not only the greatest of virtues, but the parent of all others.",
+        "quote_category": "Virtue",
+        "author_name": "Marcus Tullius Cicero",
+        "author_birth_year": -106,
+        "author_death_year": -43
+    },
+    {
+        "quote_text": "The future belongs to those who believe in the beauty of their dreams.",
+        "quote_category": "Dreams",
+        "author_name": "Eleanor Roosevelt",
+        "author_birth_year": 1884,
+        "author_death_year": 1962
+    },
+    {
+        "quote_text": "No one can make you feel inferior without your consent.",
+        "quote_category": "Self-Esteem",
+        "author_name": "Eleanor Roosevelt",
+        "author_birth_year": 1884,
+        "author_death_year": 1962
+    },
+    {
+        "quote_text": "That which does not kill us makes us stronger.",
+        "quote_category": "Resilience",
+        "author_name": "Friedrich Nietzsche",
+        "author_birth_year": 1844,
+        "author_death_year": 1900
+    },
+    {
+        "quote_text": "He who has a why to live can bear almost any how.",
+        "quote_category": "Existence",
+        "author_name": "Friedrich Nietzsche",
+        "author_birth_year": 1844,
+        "author_death_year": 1900
+    },
+    {
+        "quote_text": "Success usually comes to those who are too busy to be looking for it.",
+        "quote_category": "Success",
+        "author_name": "Henry David Thoreau",
+        "author_birth_year": 1817,
+        "author_death_year": 1862
+    },
+    {
+        "quote_text": "Go confidently in the direction of your dreams. Live the life you have imagined.",
+        "quote_category": "Motivation",
+        "author_name": "Henry David Thoreau",
+        "author_birth_year": 1817,
+        "author_death_year": 1862
+    },
+    {
+        "quote_text": "Life is what happens when you're busy making other plans.",
+        "quote_category": "Life",
+        "author_name": "John Lennon",
+        "author_birth_year": 1940,
+        "author_death_year": 1980
+    },
+    {
+        "quote_text": "Time you enjoy wasting, was not wasted.",
+        "quote_category": "Wisdom",
+        "author_name": "John Lennon",
+        "author_birth_year": 1940,
+        "author_death_year": 1980
+    },
+    {
+        "quote_text": "It is during our darkest moments that we must focus to see the light.",
+        "quote_category": "Hope",
+        "author_name": "Aristotle",
+        "author_birth_year": -384,
+        "author_death_year": -322
+    },
+    {
+        "quote_text": "Knowing yourself is the beginning of all wisdom.",
+        "quote_category": "Self-Knowledge",
+        "author_name": "Aristotle",
+        "author_birth_year": -384,
+        "author_death_year": -322
+    },
+    {
+        "quote_text": "Do what you can, with what you have, where you are.",
+        "quote_category": "Determination",
+        "author_name": "Theodore Roosevelt",
+        "author_birth_year": 1858,
+        "author_death_year": 1919
+    },
+    {
+        "quote_text": "Believe you can and you're halfway there.",
+        "quote_category": "Confidence",
+        "author_name": "Theodore Roosevelt",
+        "author_birth_year": 1858,
+        "author_death_year": 1919
+    },
+    {
+        "quote_text": "A person who never made a mistake never tried anything new.",
+        "quote_category": "Innovation",
+        "author_name": "Albert Einstein",
+        "author_birth_year": 1879,
+        "author_death_year": 1955
+    },
+    {
+        "quote_text": "Anyone who has never made a mistake has never tried anything new.",
+        "quote_category": "Creativity",
+        "author_name": "Albert Einstein",
+        "author_birth_year": 1879,
+        "author_death_year": 1955
+    },
+    {
+        "quote_text": "The best way to predict your future is to create it.",
+        "quote_category": "Future",
+        "author_name": "Abraham Lincoln",
+        "author_birth_year": 1809,
+        "author_death_year": 1865
+    },
+    {
+        "quote_text": "I am a slow walker, but I never walk back.",
+        "quote_category": "Persistence",
+        "author_name": "Abraham Lincoln",
+        "author_birth_year": 1809,
+        "author_death_year": 1865
+    },
+    {
+        "quote_text": "Stay hungry, stay foolish.",
+        "quote_category": "Innovation",
+        "author_name": "Steve Jobs",
+        "author_birth_year": 1955,
+        "author_death_year": 2011
+    },
+    {
+        "quote_text": "Your time is limited, so don’t waste it living someone else’s life.",
+        "quote_category": "Purpose",
+        "author_name": "Steve Jobs",
+        "author_birth_year": 1955,
+        "author_death_year": 2011
+    },
+    {
+        "quote_text": "Act as if what you do makes a difference. It does.",
+        "quote_category": "Action",
+        "author_name": "William James",
+        "author_birth_year": 1842,
+        "author_death_year": 1910
+    },
+    {
+        "quote_text": "The greatest weapon against stress is our ability to choose one thought over another.",
+        "quote_category": "Mindfulness",
+        "author_name": "William James",
+        "author_birth_year": 1842,
+        "author_death_year": 1910
+    },
+    {
+        "quote_text": "If you judge people, you have no time to love them.",
+        "quote_category": "Compassion",
+        "author_name": "Mother Teresa",
+        "author_birth_year": 1910,
+        "author_death_year": 1997
+    },
+    {
+        "quote_text": "Spread love everywhere you go. Let no one ever come to you without leaving happier.",
+        "quote_category": "Kindness",
+        "author_name": "Mother Teresa",
+        "author_birth_year": 1910,
+        "author_death_year": 1997
+    },
+    {
+        "quote_text": "Success is not how high you have climbed, but how you make a positive difference to the world.",
+        "quote_category": "Success",
+        "author_name": "Roy T. Bennett",
+        "author_birth_year": null,
+        "author_death_year": null
+    },
+    {
+        "quote_text": "Don't be pushed around by the fears in your mind. Be led by the dreams in your heart.",
+        "quote_category": "Courage",
+        "author_name": "Roy T. Bennett",
+        "author_birth_year": null,
+        "author_death_year": null
+    },
+    {
+        "quote_text": "To live is the rarest thing in the world. Most people exist, that is all.",
+        "quote_category": "Life",
+        "author_name": "Oscar Wilde",
+        "author_birth_year": 1854,
+        "author_death_year": 1900
+    },
+    {
+        "quote_text": "Be yourself; everyone else is already taken.",
+        "quote_category": "Individuality",
+        "author_name": "Oscar Wilde",
+        "author_birth_year": 1854,
+        "author_death_year": 1900
+    },
+    {
+        "quote_text": "It always seems impossible until it's done.",
+        "quote_category": "Perseverance",
+        "author_name": "Nelson Mandela",
+        "author_birth_year": 1918,
+        "author_death_year": 2013
+    },
+    {
+        "quote_text": "Education is the most powerful weapon which you can use to change the world.",
+        "quote_category": "Education",
+        "author_name": "Nelson Mandela",
+        "author_birth_year": 1918,
+        "author_death_year": 2013
+    },
+    {
+        "quote_text": "I would rather die on my feet than live on my knees.",
+        "quote_category": "Courage",
+        "author_name": "Emiliano Zapata",
+        "author_birth_year": 1879,
+        "author_death_year": 1919
+    },
+    {
+        "quote_text": "Better to die standing than to live on your knees.",
+        "quote_category": "Revolution",
+        "author_name": "Dolores Ibárruri",
+        "author_birth_year": 1895,
+        "author_death_year": 1989
+    },
+    {
+        "quote_text": "If you tell the truth, you don't have to remember anything.",
+        "quote_category": "Honesty",
+        "author_name": "Mark Twain",
+        "author_birth_year": 1835,
+        "author_death_year": 1910
+    },
+    {
+        "quote_text": "The secret of getting ahead is getting started.",
+        "quote_category": "Motivation",
+        "author_name": "Mark Twain",
+        "author_birth_year": 1835,
+        "author_death_year": 1910
+    },
+    {
+        "quote_text": "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+        "quote_category": "Resilience",
+        "author_name": "Nelson Mandela",
+        "author_birth_year": 1918,
+        "author_death_year": 2013
+    },
+    {
+        "quote_text": "Don’t count the days, make the days count.",
+        "quote_category": "Motivation",
+        "author_name": "Muhammad Ali",
+        "author_birth_year": 1942,
+        "author_death_year": 2016
+    },
+    {
+        "quote_text": "He who is not courageous enough to take risks will accomplish nothing in life.",
+        "quote_category": "Risk",
+        "author_name": "Muhammad Ali",
+        "author_birth_year": 1942,
+        "author_death_year": 2016
+    },
+    {
+        "quote_text": "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.",
+        "quote_category": "Mindfulness",
+        "author_name": "Buddha",
+        "author_birth_year": -563,
+        "author_death_year": -483
+    },
+    {
+        "quote_text": "Peace comes from within. Do not seek it without.",
+        "quote_category": "Peace",
+        "author_name": "Buddha",
+        "author_birth_year": -563,
+        "author_death_year": -483
+    },
+    {
+        "quote_text": "Whether you think you can, or you think you can't – you're right.",
+        "quote_category": "Belief",
+        "author_name": "Henry Ford",
+        "author_birth_year": 1863,
+        "author_death_year": 1947
+    },
+    {
+        "quote_text": "Coming together is a beginning; keeping together is progress; working together is success.",
+        "quote_category": "Teamwork",
+        "author_name": "Henry Ford",
+        "author_birth_year": 1863,
+        "author_death_year": 1947
+    },
+    {
+        "quote_text": "Do not pray for an easy life, pray for the strength to endure a difficult one.",
+        "quote_category": "Strength",
+        "author_name": "Bruce Lee",
+        "author_birth_year": 1940,
+        "author_death_year": 1973
+    },
+    {
+        "quote_text": "Knowing is not enough, we must apply. Willing is not enough, we must do.",
+        "quote_category": "Action",
+        "author_name": "Johann Wolfgang von Goethe",
+        "author_birth_year": 1749,
+        "author_death_year": 1832
+    },
+    {
+        "quote_text": "Whatever you can do or dream you can, begin it. Boldness has genius, power, and magic in it.",
+        "quote_category": "Creativity",
+        "author_name": "Johann Wolfgang von Goethe",
+        "author_birth_year": 1749,
+        "author_death_year": 1832
+    },
+    {
+        "quote_text": "Don't cry because it's over, smile because it happened.",
+        "quote_category": "Gratitude",
+        "author_name": "Dr. Seuss",
+        "author_birth_year": 1904,
+        "author_death_year": 1991
+    },
+    {
+        "quote_text": "Today you are You, that is truer than true. There is no one alive who is Youer than You.",
+        "quote_category": "Identity",
+        "author_name": "Dr. Seuss",
+        "author_birth_year": 1904,
+        "author_death_year": 1991
+    },
+    {
+        "quote_text": "If opportunity doesn't knock, build a door.",
+        "quote_category": "Opportunity",
+        "author_name": "Milton Berle",
+        "author_birth_year": 1908,
+        "author_death_year": 2002
+    },
+    {
+        "quote_text": "Laughter is an instant vacation.",
+        "quote_category": "Humor",
+        "author_name": "Milton Berle",
+        "author_birth_year": 1908,
+        "author_death_year": 2002
+    },
+    {
+        "quote_text": "Life isn't about finding yourself. Life is about creating yourself.",
+        "quote_category": "Self-Discovery",
+        "author_name": "George Bernard Shaw",
+        "author_birth_year": 1856,
+        "author_death_year": 1950
+    },
+    {
+        "quote_text": "Progress is impossible without change, and those who cannot change their minds cannot change anything.",
+        "quote_category": "Change",
+        "author_name": "George Bernard Shaw",
+        "author_birth_year": 1856,
+        "author_death_year": 1950
+    },
+    {
+        "quote_text": "Do not wait for leaders; do it alone, person to person.",
+        "quote_category": "Initiative",
+        "author_name": "Mother Teresa",
+        "author_birth_year": 1910,
+        "author_death_year": 1997
+    },
+    {
+        "quote_text": "Kind words can be short and easy to speak, but their echoes are truly endless.",
+        "quote_category": "Kindness",
+        "author_name": "Mother Teresa",
+        "author_birth_year": 1910,
+        "author_death_year": 1997
+    },
+    {
+        "quote_text": "You must be the change you wish to see in the world.",
+        "quote_category": "Change",
+        "author_name": "Mahatma Gandhi",
+        "author_birth_year": 1869,
+        "author_death_year": 1948
+    },
+    {
+        "quote_text": "An eye for an eye only ends up making the whole world blind.",
+        "quote_category": "Peace",
+        "author_name": "Mahatma Gandhi",
+        "author_birth_year": 1869,
+        "author_death_year": 1948
+    },
+    {
+        "quote_text": "Creativity is intelligence having fun.",
+        "quote_category": "Creativity",
+        "author_name": "Albert Einstein",
+        "author_birth_year": 1879,
+        "author_death_year": 1955
+    },
+    {
+        "quote_text": "Logic will get you from A to B. Imagination will take you everywhere.",
+        "quote_category": "Imagination",
+        "author_name": "Albert Einstein",
+        "author_birth_year": 1879,
+        "author_death_year": 1955
+    },
+    {
+        "quote_text": "We can do no great things, only small things with great love.",
+        "quote_category": "Compassion",
+        "author_name": "Mother Teresa",
+        "author_birth_year": 1910,
+        "author_death_year": 1997
+    },
+    {
+        "quote_text": "It is better to be hated for what you are than to be loved for what you are not.",
+        "quote_category": "Authenticity",
+        "author_name": "André Gide",
+        "author_birth_year": 1869,
+        "author_death_year": 1951
+    }
+]

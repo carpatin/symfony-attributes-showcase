@@ -14,7 +14,7 @@ final class Version20250630134311 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Change quote author from string to entity reference';
+        return 'Changes quote author from string to entity reference';
     }
 
     public function up(Schema $schema): void

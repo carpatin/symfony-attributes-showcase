@@ -8,14 +8,19 @@
         <h1 class="text-white mb-8">Quote of the Day!</h1>
 
         <div class="flex flex-col gap-5">
+            <a href="{{ path('app_daily_quote_list_authors') }}"
+               class="text-2xl no-underline py-4 px-4 bg-gray-700 rounded border border-gray-600">
+                List authors
+            </a>
+
             <a href="{{ path('app_daily_quote_random') }}"
                class="text-2xl no-underline py-4 px-4 bg-gray-700 rounded border border-gray-600">
-                Random Quote
+                See a random quote
             </a>
 
             <a href="{{ path('app_daily_quote_liked') }}"
                class="text-2xl no-underline py-4 px-4 bg-gray-700 rounded border border-gray-600">
-                One of most liked quotes
+                See a highly liked quote
             </a>
         </div>
     </div>
