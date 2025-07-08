@@ -21,7 +21,7 @@ final class Version20250702103904 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql(
-            'CREATE TABLE pet (id SERIAL NOT NULL, name VARCHAR(50) NOT NULL, is_thirsty BOOLEAN DEFAULT false NOT NULL, is_hungry BOOLEAN DEFAULT false NOT NULL, mood VARCHAR(255) DEFAULT \'normal\' NOT NULL, PRIMARY KEY(id))',
+            'CREATE TABLE pet (id SERIAL NOT NULL, name VARCHAR(50) NOT NULL, is_thirsty BOOLEAN DEFAULT false NOT NULL, is_hungry BOOLEAN DEFAULT false NOT NULL, mood VARCHAR(255) DEFAULT \'relaxed\' NOT NULL, PRIMARY KEY(id))',
         );
         $this->addSql('CREATE UNIQUE INDEX UNIQ_E4529B855E237E06 ON pet (name)');
     }
@@ -29,7 +29,6 @@ final class Version20250702103904 extends AbstractMigration
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE SCHEMA public');
         $this->addSql('DROP TABLE pet');
     }
 }

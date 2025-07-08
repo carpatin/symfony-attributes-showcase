@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\DailyQuote\QuoteSelectorInterface;
-use App\DailyQuote\Selector\MostLikesSelector;
-use App\Entity\Author;
-use App\Entity\Quote;
+use App\Entity\DailyQuote\Author;
+use App\Entity\DailyQuote\Quote;
+use App\Service\DailyQuote\QuoteSelectorInterface;
+use App\Service\DailyQuote\Selector\MostLikesSelector;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Pagerfanta;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;

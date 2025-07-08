@@ -6,7 +6,7 @@ namespace App\Controller;
 
 use App\Attribute\MapEntityByPayloadField;
 use App\Dto\PetYourPet\PetCaretake;
-use App\Entity\Pet;
+use App\Entity\PetYourPet\Pet;
 use App\Repository\PetRepository;
 use App\Service\PetYourPet\CaretakeCommands\Caress;
 use App\Service\PetYourPet\CaretakeCommands\GiveFood;

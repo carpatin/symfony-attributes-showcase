@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\DailyQuote;
 
 use App\Repository\AuthorRepository;
 use Doctrine\DBAL\Types\Types;

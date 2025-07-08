@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\DailyQuote;
 
 use App\Repository\QuoteRepository;
 use Doctrine\ORM\Mapping as ORM;

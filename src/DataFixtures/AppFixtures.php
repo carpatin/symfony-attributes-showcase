@@ -2,26 +2,41 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Author;
-use App\Entity\Pet;
-use App\Entity\Quote;
+use App\Entity\DailyQuote\Author;
+use App\Entity\DailyQuote\Quote;
+use App\Entity\PetYourPet\Pet;
+use App\Entity\User;
 use App\Service\PetYourPet\PetMood;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use JsonException;
-use Random\RandomException;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
     private const string QUOTES_FILE = '/data/quotes.json';
 
-    /**
-     * @throws RandomException
-     * @throws JsonException
-     */
+    public function __construct(
+        private readonly UserPasswordHasherInterface $passwordHasher,
+    ) {
+        //
+    }
+
     public function load(ObjectManager $manager): void
     {
+        $user = new User();
+        $user->setEmail('uploader@example.com');
+        $user->setRoles(['ROLE_UPLOADER']);
+        $user->setPassword($this->passwordHasher->hashPassword($user, 'password'));
+        $manager->persist($user);
+
+        $user = new User();
+        $user->setEmail('user@example.com');
+        $user->setRoles(['ROLE_USER']);
+        $user->setPassword($this->passwordHasher->hashPassword($user, 'password'));
+        $manager->persist($user);
+
         $authors = [];
         foreach ($this->loadQuotesFromFile() as $quoteData) {
             [

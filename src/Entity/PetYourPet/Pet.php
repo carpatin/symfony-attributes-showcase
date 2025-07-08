@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\PetYourPet;
 
 use App\Repository\PetRepository;
 use App\Service\PetYourPet\PetMood;

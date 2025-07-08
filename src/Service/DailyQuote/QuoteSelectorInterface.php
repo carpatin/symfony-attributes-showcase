@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\DailyQuote;
+namespace App\Service\DailyQuote;
 
 use App\Dto\DailyQuote\Quote;
 

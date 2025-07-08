@@ -34,10 +34,14 @@ https://symfony.com/doc/current/reference/attributes.html
 - AsTargetedValueResolver
 - MapQueryParameter
 - MapRequestPayload
+- WithHttpStatus
 
 ## Routing
 
 - Route
+
+## Security
+- CurrentUser
 
 ## Twig
 
@@ -121,6 +125,7 @@ Showcased Symfony features:
 - `#[Autowire(expression: 'service("App\\\\DailyQuote\\\\QuoteSelectorResolver").resolveToSelector(env("APP_QUOTE_SELECTOR"))')]`
 used with an expression in which another service (a resolver) is called with env variable value to resolve the
 injected argument to a certain service
-
 - `#[AsDecorator(decorates: QuoteSelectorInterface::class, priority: 100)]` for applying a decorator pattern,
   exemplified with two decorators applied on the same service identified by its interface
+- `#[WithHttpStatus(500)]` for giving an exception an HTTP code for when caught by symfony so that the status code is
+  returned in the response

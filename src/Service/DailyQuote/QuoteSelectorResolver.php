@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\DailyQuote;
+namespace App\Service\DailyQuote;
 
-use App\DailyQuote\Selector\MostLikesSelector;
-use App\DailyQuote\Selector\RandomSelector;
+use App\Service\DailyQuote\Selector\MostLikesSelector;
+use App\Service\DailyQuote\Selector\RandomSelector;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 readonly class QuoteSelectorResolver

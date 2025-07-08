@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Author;
+use App\Entity\DailyQuote\Author;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;

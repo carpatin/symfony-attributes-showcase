@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Quote;
+use App\Entity\DailyQuote\Quote;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -35,6 +35,10 @@ class QuoteRepository extends ServiceEntityRepository
             ->select('COUNT(q.id)')
             ->getQuery()
             ->getSingleScalarResult();
+
+        if (0 === $total) {
+            return null;
+        }
 
         // pick one random offset then retrieve quote at offset
         $offset = random_int(0, $total - 1);

@@ -10,24 +10,23 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20250630133950 extends AbstractMigration
+final class Version20250708110130 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Creates the author table';
+        return 'Mainly changes for photo album';
     }
 
     public function up(Schema $schema): void
     {
-        // this up() migration is auto-generated, please modify it to your needs
         $this->addSql(
-            'CREATE TABLE author (id SERIAL NOT NULL, name VARCHAR(100) NOT NULL, year_born SMALLINT, year_died SMALLINT, PRIMARY KEY(id))',
+            'CREATE TABLE photo (id SERIAL NOT NULL, filename VARCHAR(255) NOT NULL, content BYTEA NOT NULL, title VARCHAR(20) NOT NULL, description VARCHAR(255) NOT NULL, PRIMARY KEY(id))',
         );
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP TABLE author');
+        $this->addSql('DROP TABLE photo');
     }
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Service\PetYourPet\CaretakeCommands;
 
 use App\Dto\PetYourPet\PetCaretake\PlayDetails;
-use App\Entity\Pet;
+use App\Entity\PetYourPet\Pet;
 use App\Service\PetYourPet\PetMood;
 use App\Service\PetYourPet\PetYourPetLoggerAwareTrait;
 

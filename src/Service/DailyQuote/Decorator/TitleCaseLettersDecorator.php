@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\DailyQuote\Decorator;
+namespace App\Service\DailyQuote\Decorator;
 
-use App\DailyQuote\QuoteSelectorInterface;
 use App\Dto\DailyQuote\Quote;
+use App\Service\DailyQuote\QuoteSelectorInterface;
 use Symfony\Component\DependencyInjection\Attribute\AsDecorator;
 
 // Example usage of a decorator service: implements the same interface, and with the
