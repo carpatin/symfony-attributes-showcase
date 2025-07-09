@@ -1,0 +1,7 @@
+<div{{ attributes }}>
+    <div class="aspect-video bg-gray-800 rounded-md overflow-hidden" title="{{ photo.description }}">
+        <img src="data:image/jpeg;base64,{{ photo.content|stream_get_contents|base64_encode }}" alt="{{ photo.title }}"
+             class="w-full h-full object-cover">
+    </div>
+    <span>{{ photo.title }}</span>
+</div>

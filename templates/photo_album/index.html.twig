@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Photo Album{% endblock %}
+
+{% block body %}
+    <div class="w-full flex">
+        <div class="w-1/4 p-2 border-r border-gray-700">
+            {% if is_granted('ROLE_UPLOADER') %}
+                <div class="p-2 rounded bg-gray-800">
+                    <h1 class="text-base font-bold text-white mb-2 text-center">Upload one photo</h1>
+                    {{ form_start(uploadForm) }}
+                    <div class="space-y-3">
+                        {{ form_row(uploadForm.title, {
+                            label_attr: { class: 'block text-xs font-medium text-white mb-1' },
+                            attr: { class: 'text-sm w-full p-1 bg-gray-700 text-white rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent' }
+                        }) }}
+
+                        {{ form_row(uploadForm.description, {
+                            label_attr: { class: 'block text-xs font-medium text-white mb-1' },
+                            attr: { class: 'text-sm w-full p-1 bg-gray-700 text-white rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent' }
+                        }) }}
+
+                        {{ form_row(uploadForm.content, {
+                            label_attr: { class: 'block text-xs font-medium text-white mb-1' },
+                            attr: { class: 'text-sm w-full p-1 bg-gray-700 text-white rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent' }
+                        }) }}
+                        <button type="submit"
+                                class="w-full bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200 font-semibold">
+                            Upload
+                        </button>
+                    </div>
+                    {{ form_end(uploadForm) }}
+
+                </div>
+
+                <div class="p-2 mt-2 rounded bg-gray-800">
+                    <h1 class="text-base font-bold text-white mb-2 text-center">Upload photo batch </h1>
+                    <form method="post" action="{{ path('app_photoalbum_multiple_upload') }}"
+                          enctype="multipart/form-data">
+
+                        <input type="hidden" name="_csrf" value="{{ csrf_token('multiple_upload') }}">
+
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-medium text-white mb-1">Common title</label>
+                                <input type="text" name="title"
+                                       class="text-sm w-full p-1 bg-gray-700 text-white rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-white mb-1">Common description</label>
+                                <textarea name="description"
+                                          class="text-sm w-full p-1 bg-gray-700 text-white rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-white mb-1">Photo files</label>
+                                <input type="file" name="photos[]" multiple accept="image/*"
+                                       class="text-sm w-full p-1 bg-gray-700 text-white rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <button type="submit"
+                                    class="w-full bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200 font-semibold">
+                                Upload all
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            {% else %}
+                <h1 class="text-base font-bold text-white mb-2 text-center">Album photos</h1>
+            {% endif %}
+        </div>
+        <div class="w-3/4 p-2">
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    {% set color =
+                        type == 'success' ? 'green' :
+                        type == 'error' ? 'red' :
+                        type == 'warning' ? 'yellow' :
+                        type == 'info' ? 'blue' :
+                        'gray-100' %}
+                    <div
+                        class="p-4 mb-4 text-sm text-{{ color }}-800 bg-{{ color }}-100 border border-{{ color }}-300 rounded-lg">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            <div class="grid grid-cols-5 gap-4">
+                {% for photo in photos %}
+                    <twig:photo_item :photo="photo"/>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -5,6 +5,16 @@ they bring to the newer versions of Symfony.
 The examples are offered for learning purposes and are by no means a statement of best practices for using the
 framework.
 
+It features:
+- register page
+- login page
+- main landing page after login with a menu
+- four sections on four unrelated topics, each with corresponding domain and features:
+  - a section about taking care of pets
+  - a section about showing daily quotes from famous authors
+  - a section for beautifying plain text
+  - a section for uploading photos in a photo album and viewing them
+
 # Documentation
 
 https://symfony.com/doc/current/reference/attributes.html
@@ -29,11 +39,16 @@ https://symfony.com/doc/current/reference/attributes.html
 - AutowireLocator
 - AutowireIterator
 
+## Event Dispatcher
+
+- AsEventListener
+
 ## HttpKernel
 
 - AsTargetedValueResolver
 - MapQueryParameter
 - MapRequestPayload
+- MapUploadedFile
 - WithHttpStatus
 
 ## Routing
@@ -41,11 +56,14 @@ https://symfony.com/doc/current/reference/attributes.html
 - Route
 
 ## Security
+
 - CurrentUser
+- IsGranted
 
 ## Twig
 
 - Template
+- AsTwigComponent
 
 # Pet Your Pet
 
@@ -129,3 +147,28 @@ injected argument to a certain service
   exemplified with two decorators applied on the same service identified by its interface
 - `#[WithHttpStatus(500)]` for giving an exception an HTTP code for when caught by symfony so that the status code is
   returned in the response
+- use of Twig macro
+
+# Photo Album
+
+Controller: `App\Controller\PhotoAlbumController`
+
+URL's:
+
+- GET https://localhost:8000/photo-album/ - page with a grid of photos and forms to upload one or batch of photos
+- POST https://localhost:8000/photo-album/upload - upload single photo using a Symfony form
+- POST https://localhost:8000/photo-album/multiple-upload - upload multiple photos using attributes to map texts to DTO
+  and the images to an array argument of UploadedFile objects
+
+Showcased Symfony features:
+
+- `#[CurrentUser]` for injecting the currently logged-in user in a controller action
+- `#[IsGranted('ROLE_UPLOADER')]` for ensuring that only users with a certain role are able to perform an action
+- `#[IsCsrfTokenValid]` for checking the CSRF token in our multiple upload controller, that doesn't use a Symfony form
+- `#[MapUploadedFile]` for mapping a POSTed file to an UploadedFile argument, or multiple files to an iterable argument
+- `#[MapRequestPayload]` for mapping the title and description fields to a DTO
+- `#[AsTwigComponent]` for configuring a Twig UX component class
+- `#[AsEventListener]` for registering the ExceptionListener to check for CSRF exception and throw instead a bad request
+- use of form for one photo upload
+- use of a Twig UX component for a photo grid item
+- use of custom Twig filters to prepare image base64 content for img tag

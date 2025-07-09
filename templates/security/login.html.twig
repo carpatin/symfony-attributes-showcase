@@ -8,17 +8,17 @@
             <h1 class="text-2xl font-bold text-white mb-6 text-center">Please log in</h1>
             <form method="POST">
                 <div class="space-y-5">
-                {% if error %}
-                    <div
-                        class="bg-red-500 text-white p-4 rounded mb-4">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                {% endif %}
+                    {% if error %}
+                        <div
+                            class="bg-red-500 text-white p-4 rounded mb-4">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
 
-                {% if app.user %}
-                    <div class="text-gray-300 mb-4">
-                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}"
-                                                                               class="text-blue-400 hover:text-blue-300">Logout</a>
-                    </div>
-                {% endif %}
+                    {% if app.user %}
+                        <div class="text-gray-300 mb-4">
+                            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}"
+                                                                                   class="text-blue-400 hover:text-blue-300">Logout</a>
+                        </div>
+                    {% endif %}
 
                     <div>
                         <label for="username" class="block text-sm font-medium text-white mb-1">Email</label>
@@ -34,18 +34,9 @@
                                autocomplete="current-password"
                                required>
                     </div>
+
                     <input type="hidden" name="_csrf_token" data-controller="csrf-protection"
                            value="{{ csrf_token('authenticate') }}">
-
-                    {#
-                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                    See https://symfony.com/doc/current/security/remember_me.html
-
-                    <div class="checkbox mb-3">
-                        <input type="checkbox" name="_remember_me" id="_remember_me">
-                        <label for="_remember_me">Remember me</label>
-                    </div>
-                    #}
 
                     <button
                         class="w-full bg-blue-600 text-white py-2 px-4 rounded-md mt-6 hover:bg-blue-700 transition duration-200 font-semibold"
