@@ -79,6 +79,7 @@ https://symfony.com/doc/current/reference/attributes.html
 
 - Template
 - AsTwigComponent
+- AsTwigFilter
 
 # Pet Your Pet
 
@@ -183,6 +184,7 @@ Showcased Symfony features:
 - `#[MapUploadedFile]` for mapping a POSTed file to an UploadedFile argument, or multiple files to an iterable argument
 - `#[MapRequestPayload]` for mapping the title and description fields to a DTO
 - `#[AsTwigComponent]` for configuring a Twig UX component class
+- `#[AsTwigFilter]` for registering a filter in our custom Twig extension
 - `#[AsEventListener]` for registering the ExceptionListener to check for CSRF exception and throw instead a bad request
 - use of form for one photo upload
 - use of a Twig UX component for a photo grid item
