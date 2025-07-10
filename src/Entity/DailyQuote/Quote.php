@@ -4,6 +4,7 @@ namespace App\Entity\DailyQuote;
 
 use App\Repository\QuoteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: QuoteRepository::class)]
 class Quote
@@ -14,15 +15,36 @@ class Quote
     private ?int $id = null;
 
     #[ORM\Column()]
+    #[Assert\NotBlank(message: 'Quote text cannot be blank')]
+    #[Assert\Length(
+        min: 1,
+        max: 1000,
+        minMessage: 'Quote must not be empty',
+        maxMessage: 'Quote cannot be longer than {{ limit }} characters'
+    )]
     private ?string $text = null;
 
     #[ORM\ManyToOne(targetEntity: Author::class, fetch: 'EAGER')]
+    #[Assert\NotNull(message: 'Author must be specified')]
+    #[Assert\Valid]
     private ?Author $author = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: 'Category cannot be blank')]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Category must be at least {{ limit }} characters long',
+        maxMessage: 'Category cannot be longer than {{ limit }} characters'
+    )]
     private ?string $category = null;
 
     #[ORM\Column]
+    #[Assert\NotNull(message: 'Likes count must be specified')]
+    #[Assert\GreaterThanOrEqual(
+        value: 0,
+        message: 'Likes count cannot be negative'
+    )]
     private ?int $likes = null;
 
     public function getId(): ?int

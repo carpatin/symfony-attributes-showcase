@@ -9,6 +9,7 @@ use App\Dto\PetYourPet\PetCaretake\GiveFoodDetails;
 use App\Dto\PetYourPet\PetCaretake\GiveWaterDetails;
 use App\Dto\PetYourPet\PetCaretake\PlayDetails;
 use Exception;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class PetCaretake
 {
@@ -18,11 +19,41 @@ class PetCaretake
     public const string COMMAND_PLAY       = 'play';
 
     public function __construct(
+        #[Assert\NotBlank(message: 'Pet name cannot be blank')]
+        #[Assert\Length(
+            min: 2,
+            max: 50,
+            minMessage: 'Pet name must be at least {{ limit }} characters long',
+            maxMessage: 'Pet name cannot be longer than {{ limit }} characters'
+        )]
+        #[Assert\Regex(
+            pattern: '/^[a-zA-Z0-9\-\s]+$/',
+            message: 'Pet name can only contain letters, numbers, spaces, and hyphens'
+        )]
         public string $name,
+
+        #[Assert\NotBlank(message: 'Command cannot be blank')]
+        #[Assert\Choice(
+            choices: [
+                self::COMMAND_GIVE_WATER,
+                self::COMMAND_GIVE_FOOD,
+                self::COMMAND_CARESS,
+                self::COMMAND_PLAY,
+            ],
+            message: 'Please choose a valid command'
+        )]
         public string $command,
+
+        #[Assert\Valid]
         public GiveWaterDetails $giveWaterCaretake,
+
+        #[Assert\Valid]
         public GiveFoodDetails $giveFoodCaretake,
+
+        #[Assert\Valid]
         public CaressDetails $caressCaretake,
+
+        #[Assert\Valid]
         public PlayDetails $playCaretake,
     ) {
         //

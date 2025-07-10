@@ -60,6 +60,21 @@ https://symfony.com/doc/current/reference/attributes.html
 - CurrentUser
 - IsGranted
 
+## Validator
+
+- Constraints\NotBlank
+- Constraints\NotNull
+- Constraints\Length
+- Constraints\GreaterThanOrEqual
+- Constraints\LessThanOrEqual
+- Constraints\Expression
+- Constraints\Range
+- Constraints\Regex
+- Constraints\Valid
+- Constraints\Choice
+- Constraints\File
+- Constraints\Image
+
 ## Twig
 
 - Template

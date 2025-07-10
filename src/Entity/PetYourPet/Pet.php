@@ -5,8 +5,14 @@ namespace App\Entity\PetYourPet;
 use App\Repository\PetRepository;
 use App\Service\PetYourPet\PetMood;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PetRepository::class)]
+#[UniqueEntity(
+    fields: ['name'],
+    message: 'This pet name is already taken.'
+)]
 class Pet
 {
     #[ORM\Id]
@@ -15,6 +21,17 @@ class Pet
     private ?int $id = null;
 
     #[ORM\Column(length: 50, unique: true)]
+    #[Assert\NotBlank(message: 'Pet name cannot be blank')]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Pet name must be at least {{ limit }} characters long',
+        maxMessage: 'Pet name cannot be longer than {{ limit }} characters'
+    )]
+    #[Assert\Regex(
+        pattern: '/^[a-zA-Z0-9\-\s]+$/',
+        message: 'Pet name can only contain letters, numbers, spaces, and hyphens'
+    )]
     private string $name;
 
     #[ORM\Column(options: ['default' => false])]

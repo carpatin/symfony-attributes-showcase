@@ -23,6 +23,8 @@ use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Component\Security\Http\Attribute\IsCsrfTokenValid;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Validator\Constraints;
+use Symfony\Component\Validator\Exception\ValidationFailedException;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[Route('/photo-album')]
 final class PhotoAlbumController extends AbstractController
@@ -51,6 +53,7 @@ final class PhotoAlbumController extends AbstractController
         User $user,
         Request $request,
         EntityManagerInterface $em,
+        ValidatorInterface $validator,
     ) {
         $photo = new Photo();
         $form = $this->createForm(PhotoUploadForm::class, $photo);
@@ -75,6 +78,11 @@ final class PhotoAlbumController extends AbstractController
             $photo->setFilename($uploadedFile->getClientOriginalName());
             $photo->setUploader($user);
 
+            $errors = $validator->validate($photo);
+            if (count($errors) > 0) {
+                throw new ValidationFailedException($photo, $errors);
+            }
+
             $em->persist($photo);
             $em->flush();
 
@@ -97,7 +105,7 @@ final class PhotoAlbumController extends AbstractController
         BulkPhotosDetails $bulkPhotosDetails,
         #[MapUploadedFile(
             constraints: [
-                new Constraints\File(maxSize: '5M', mimeTypes: ['image/png', 'image/jpeg']),
+                new Constraints\File(maxSize: '15M', mimeTypes: ['image/png', 'image/jpeg']),
                 new Constraints\Image(maxWidth: 1920, maxHeight: 1080),
             ],
             name: 'photos',
@@ -107,6 +115,7 @@ final class PhotoAlbumController extends AbstractController
         #[CurrentUser]
         User $user,
         EntityManagerInterface $em,
+        ValidatorInterface $validator,
     ): Response {
         try {
             $c = 0;
@@ -117,6 +126,12 @@ final class PhotoAlbumController extends AbstractController
                 $photo->setUploader($user);
                 $photo->setTitle($bulkPhotosDetails->title.' '.++$c);
                 $photo->setDescription($bulkPhotosDetails->description);
+
+                $errors = $validator->validate($photo);
+                if (count($errors) > 0) {
+                    throw new ValidationFailedException($photo, $errors);
+                }
+
                 $em->persist($photo);
 
                 $this->addFlash('success', sprintf('Photo %s uploaded successfully!', $photo->getTitle()));

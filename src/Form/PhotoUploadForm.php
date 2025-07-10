@@ -34,7 +34,7 @@ class PhotoUploadForm extends AbstractType
                 'attr'        => ['class' => 'form-input'],
                 'constraints' => [
                     new Constraints\File([
-                        'maxSize'          => '5M',
+                        'maxSize'          => '15M',
                         'mimeTypes'        => [
                             'image/jpeg',
                             'image/png',
@@ -54,11 +54,12 @@ class PhotoUploadForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class'      => Photo::class,
+            'data_class'        => Photo::class,
+            'validation_groups' => ['form'],
             // customizing options for CSRF protection, just for example
-            'csrf_protection' => true, // default is true anyway
-            'csrf_field_name' => 'csrf', // instead of the default '_csrf_token'
-            'csrf_token_id'   => 'single_upload', // instead of the default 'submit' - configured as stateless
+            'csrf_protection'   => true, // default is true anyway
+            'csrf_field_name'   => 'csrf', // instead of the default '_csrf_token'
+            'csrf_token_id'     => 'single_upload', // replaces the default 'submit' - configured as stateless
         ]);
     }
 }

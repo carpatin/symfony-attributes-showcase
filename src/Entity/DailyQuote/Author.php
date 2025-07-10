@@ -5,6 +5,7 @@ namespace App\Entity\DailyQuote;
 use App\Repository\AuthorRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AuthorRepository::class)]
 class Author
@@ -15,12 +16,35 @@ class Author
     private ?int $id = null;
 
     #[ORM\Column(length: 100, unique: true)]
+    #[Assert\NotBlank(message: 'Author name cannot be blank')]
+    #[Assert\Length(
+        min: 2,
+        max: 100,
+        minMessage: 'Author name must be at least {{ limit }} characters long',
+        maxMessage: 'Author name cannot be longer than {{ limit }} characters'
+    )]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
+    #[Assert\NotNull(message: 'Year of birth must be provided')]
+    #[Assert\Range(
+        notInRangeMessage: 'Birth year must be between {{ min }} and {{ max }}',
+        min: -3000,
+        max: 2025
+    )]
     private ?int $yearBorn = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
+    #[Assert\NotNull(message: 'Year of death must be provided')]
+    #[Assert\Range(
+        notInRangeMessage: 'Death year must be between {{ min }} and {{ max }}',
+        min: -3000,
+        max: 2025
+    )]
+    #[Assert\Expression(
+        "this.getYearDied() > this.getYearBorn()",
+        message: 'Death year must be after birth year'
+    )]
     private ?int $yearDied = null;
 
     public function getId(): ?int
