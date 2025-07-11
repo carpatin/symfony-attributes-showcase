@@ -35,6 +35,7 @@ https://symfony.com/doc/current/reference/attributes.html
 - AsDecorator
 - AsTaggedItem
 - Autowire
+- AutowireCallable
 - AutoconfigureTag
 - AutowireLocator
 - AutowireIterator
@@ -124,6 +125,7 @@ Showcased Symfony features:
 - `#[AutoconfigureTag]` for tagging services either by their interface or each service class individually
 - `#[AsTaggedItem]` to provide an index for iterable services and a priority for ordering them when interated
 - `#[AutowireIterator]` for injecting an iterable argument of similarly tagged services
+- `#[AutowireCallable]` for injecting the public method of a service as Closure
 - `#[MapRequestPayload]` for mapping to a controller input argument DTO the entire submitted form data
 
 # Daily Quote

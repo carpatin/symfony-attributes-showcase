@@ -7,8 +7,10 @@ namespace App\Controller;
 use App\Dto\TextBeautify\BeautifyInput;
 use App\Service\TextBeautify\BeautifierInterface;
 use App\Service\TextBeautify\PlainTextBeautifier;
+use Closure;
 use Symfony\Bridge\Twig\Attribute\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\Attribute\AutowireCallable;
 use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Attribute\Route;
@@ -92,12 +94,13 @@ class TextBeautifyController extends AbstractController
     public function beautifyPlain(
         #[MapRequestPayload]
         BeautifyInput $beautifyInput,
-        // In this example, we use a composite beautifier that is injected normally and called
-        PlainTextBeautifier $beautifier,
+        // Example of using a beautifier service whose beautify() method is injected as a callable
+        #[AutowireCallable(service: PlainTextBeautifier::class, method: 'beautify')]
+        Closure $beautifierCallable,
     ): array {
         $text = $beautifyInput->getText();
 
-        return ['outcome' => $beautifier->beautify($text), 'applied' => ['plain_text']];
+        return ['outcome' => $beautifierCallable($text), 'applied' => ['plain_text']];
     }
 
     /**
