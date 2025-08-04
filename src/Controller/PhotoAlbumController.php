@@ -9,6 +9,7 @@ use App\Entity\PhotoAlbum\Photo;
 use App\Entity\User;
 use App\Form\PhotoUploadForm;
 use App\Repository\PhotoRepository;
+use App\Security\Voter\PhotoVoter;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use RuntimeException;
@@ -141,6 +142,18 @@ final class PhotoAlbumController extends AbstractController
         } catch (Exception $e) {
             $this->addFlash('error', sprintf('Photo upload failed: %s', $e->getMessage()));
         }
+
+        return $this->redirectToRoute('app_photoalbum_index');
+    }
+
+    #[IsGranted(PhotoVoter::DELETE, 'photo')]
+    #[Route('/photo/delete/{id}', name: 'app_photoalbum_photo_delete', methods: ['POST'])]
+    public function deletePhoto(
+        Photo $photo,
+        EntityManagerInterface $em,
+    ): Response {
+        $em->remove($photo);
+        $em->flush();
 
         return $this->redirectToRoute('app_photoalbum_index');
     }
