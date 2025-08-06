@@ -14,7 +14,7 @@ class PlainTextBeautifier implements BeautifierInterface
 {
     public function __construct(
         #[AutowireIterator(
-            // Reference the tag that unifies all text beautifiers, namely tho one set by the BeautifierInterface
+            // Reference the tag that unifies all text beautifiers, namely the ones set by the BeautifierInterface
             tag: 'app.text_beautifier',
             // The following two are needed only for the services that do not provide index and priority through
             // the #[AsTaggedItem] attribute, for the others they will be taken from the attribute on their classes.

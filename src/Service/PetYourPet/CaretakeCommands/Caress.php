@@ -21,7 +21,7 @@ class Caress
     {
         $this->logger->info('Caressing pet', ['pet_name' => $pet->getName(), 'minutes' => $details->caressTimeMinutes]);
 
-        $threshold = random_int(1, 5);
+        $threshold = $this->getRandomInt(1, 5);
         if ($details->caressTimeMinutes > $threshold) {
             $pet->setMood(PetMood::RELAXED);
             $pet->setIsThirsty(true);
@@ -31,5 +31,13 @@ class Caress
         }
 
         $this->logger->info('Pet needs more caressing?', ['pet_name' => $pet->getName()]);
+    }
+
+    /**
+     * @throws RandomException
+     */
+    protected function getRandomInt(int $min, int $max): int
+    {
+        return random_int($min, $max);
     }
 }
