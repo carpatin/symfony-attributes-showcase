@@ -33,20 +33,20 @@ class PhotoUploadForm extends AbstractType
                 'required'    => true,
                 'attr'        => ['class' => 'form-input'],
                 'constraints' => [
-                    new Constraints\File([
-                        'maxSize'          => '15M',
-                        'mimeTypes'        => [
+                    new Constraints\File(
+                        maxSize: '15M',
+                        mimeTypes: [
                             'image/jpeg',
                             'image/png',
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid JPEG or PNG image',
-                    ]),
-                    new Constraints\Image([
-                        'maxWidth'         => 1920,
-                        'maxHeight'        => 1080,
-                        'maxWidthMessage'  => 'The image width is too large ({{ width }}px). Allowed maximum width is {{ max_width }}px.',
-                        'maxHeightMessage' => 'The image height is too large ({{ height }}px). Allowed maximum height is {{ max_height }}px.',
-                    ]),
+                        mimeTypesMessage: 'Please upload a valid JPEG or PNG image',
+                    ),
+                    new Constraints\Image(
+                        maxWidth: 1920,
+                        maxHeight: 1080,
+                        maxWidthMessage: 'The image width is too large ({{ width }}px). Allowed maximum width is {{ max_width }}px.',
+                        maxHeightMessage: 'The image height is too large ({{ height }}px). Allowed maximum height is {{ max_height }}px.',
+                    ),
                 ],
             ]);
     }
